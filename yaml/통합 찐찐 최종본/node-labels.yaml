@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Node
+metadata:
+  name: guru-reworker1
+  labels:
+    main: main-app-2a
+    login: login-app-2a
+    sign: sign-app-2a
+    cart: cart-app-2a
+    main-was: main-app-was-2a
+    login-was: login-app-was-2a
+    sign-was: sign-app-was-2a
+    cart-was: cart-app-was-2a
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: guru-reworker2
+  labels:
+    main: main-app-2c
+    login: login-app-2c
+    sign: sign-app-2c
+    cart: cart-app-2c
+    main-was: main-app-was-2c
+    login-was: login-app-was-2c
+    sign-was: sign-app-was-2c
+    cart-was: cart-app-was-2c
