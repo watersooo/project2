@@ -30,9 +30,9 @@ spec:
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 5
-          readinessProbe:Q
+          readinessProbe:
             httpGet:
-              path: /W
+              path: /
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
@@ -47,7 +47,7 @@ spec:
             - name: pvcsign-was
               mountPath: /opt/tomcat/webapps/ROOT
       volumes:
-        - name: pvcsign-was  # PersistentVolumeClaim 이름과 일치하도록 수정
+        - name: pvcsign-was
           persistentVolumeClaim:
             claimName: pvc-was
       nodeSelector:
@@ -74,7 +74,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pvmain-was  # PersistentVolume 이름
+  name: pvmain-was
 spec:
   capacity:
     storage: 8Gi
@@ -153,7 +153,7 @@ spec:
             - name: pvcmain-was
               mountPath: /opt/tomcat/webapps/ROOT
       volumes:
-        - name: pvcmain-was  # PersistentVolumeClaim 이름과 일치하도록 수정
+        - name: pvcmain-was
           persistentVolumeClaim:
             claimName: pvc-was
       nodeSelector:
@@ -180,7 +180,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pvmain-was  # PersistentVolume 이름
+  name: pvmain-was
 spec:
   capacity:
     storage: 8Gi
@@ -259,7 +259,7 @@ spec:
             - name: pvclogin-was
               mountPath: /opt/tomcat/webapps/ROOT
       volumes:
-        - name: pvclogin-was  # PersistentVolumeClaim 이름과 일치하도록 수정
+        - name: pvclogin-was
           persistentVolumeClaim:
             claimName: pvc-was
       nodeSelector:
@@ -273,7 +273,7 @@ metadata:
   name: login-was-svc-2c
 spec:
   selector:
-    login-was: login-app-was
+    login-was: login-app-was-2c
   type: ClusterIP
   clusterIP: 10.100.200.3
   ports:
@@ -286,7 +286,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pvlogin-was  # PersistentVolume 이름
+  name: pvlogin-was
 spec:
   capacity:
     storage: 8Gi
@@ -354,68 +354,3 @@ spec:
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
-          resources:
-            requests:
-              memory: 400Mi
-              cpu: 400m
-            limits:
-              memory: 400Mi
-              cpu: 400m
-          volumeMounts:
-            - name: pvccart-was
-              mountPath: /opt/tomcat/webapps/ROOT
-      volumes:
-        - name: pvccart-was  # PersistentVolumeClaim 이름과 일치하도록 수정
-          persistentVolumeClaim:
-            claimName: pvc-was
-      nodeSelector:
-        cart-was: cart-app-was-2c
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: cart-was-svc
-spec:
-  selector:
-    cart-was: cart-app-was-2c
-  type: ClusterIP
-  clusterIP: 10.100.200.4
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pvcart-was  # PersistentVolume 이름
-spec:
-  capacity:
-    storage: 8Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Recycle
-  storageClassName: standard
-  hostPath:
-    path: /data/tomcat
-    type: DirectoryOrCreate
-
----
-
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: hpe-cart-was
-spec:
-  maxReplicas: 10
-  minReplicas: 3
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: ap-tomcat-cart-2c
-  targetCPUUtilizationPercentage: 50
