@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nginx  # PersistentVolumeClaim 이름
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: standard
+
+---
+  
+  apiVersion: apps/v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-was  # PersistentVolumeClaim 이름
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: standard
