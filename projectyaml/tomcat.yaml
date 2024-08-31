@@ -106,7 +106,6 @@ spec:
     main-was: main-app-was-2a
   type: ClusterIP
   clusterIP: 172.20.10.10
-  clusterIP: 172.20.10.10
   ports:
     - protocol: TCP
       port: 8080
@@ -161,7 +160,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-       maxUnavailable: 1
+      maxUnavailable: 1
       maxSurge: 1
   template:
     metadata:
@@ -211,7 +210,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-        cart-was: cart-app-was-2a
+      cart-was: cart-app-was-2a
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -297,4 +296,3 @@ spec:
     kind: Deployment
     name: ap-tomcat-cart-2a
   targetCPUUtilizationPercentage: 50
-
