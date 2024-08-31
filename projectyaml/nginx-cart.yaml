@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-       cart: cart-app-2a
+        cart: cart-app-2a
     spec:
       containers:
       - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/cart:v1.3
@@ -39,7 +39,7 @@ spec:
         persistentVolumeClaim:
           claimName: pvc-nginx
       nodeSelector:
-       cart: cart-app-2a
+        cart: cart-app-2a
 
 ---
 
@@ -54,7 +54,7 @@ spec:
   clusterIP: 172.20.10.4
   ports:
     - protocol: TCP
-       port: 80
+      port: 80
       targetPort: 80
 
 ---
@@ -87,5 +87,5 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: app-nginx-cart-2a
+    name: ap-nginx-cart-2a
   targetCPUUtilizationPercentage: 50
