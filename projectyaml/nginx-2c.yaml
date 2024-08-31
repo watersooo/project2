@@ -5,7 +5,7 @@ metadata:
   labels:
     sign: sign-app-2c
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       sign: sign-app-2c
@@ -31,21 +31,9 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
         volumeMounts:
         - name: pvcsign
-          mountPath: /opt/tomcat/webapps/ROOT
+          mountPath: /data/nginx
       volumes:
       - name: pvcsign
         persistentVolumeClaim:
@@ -63,7 +51,7 @@ spec:
   selector:
     sign: sign-app-2c
   type: NodePort
-  clusterIP: 10.100.100.2
+  clusterIP: 172.20.10.2
   ports:
     - protocol: TCP
       port: 80
@@ -95,7 +83,7 @@ metadata:
   name: hpe-sign
 spec:
   maxReplicas: 10
-  minReplicas: 3
+  minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -137,21 +125,9 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
         volumeMounts:
         - name: pvcmain
-          mountPath: /opt/tomcat/webapps/ROOT
+          mountPath: /data/nginx
       volumes:
       - name: pvcmain
         persistentVolumeClaim:
@@ -169,7 +145,7 @@ spec:
   selector:
     main: main-app-2c
   type: NodePort
-  clusterIP: 10.100.100.1
+  clusterIP: 172.20.10.1
   ports:
     - protocol: TCP
       port: 80
@@ -201,7 +177,7 @@ metadata:
   name: hpe-main
 spec:
   maxReplicas: 10
-  minReplicas: 3
+  minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -217,7 +193,7 @@ metadata:
   labels:
     login: login-app-2c
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       login: login-app-2c
@@ -243,21 +219,9 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
         volumeMounts:
         - name: pvclogin
-          mountPath: /opt/tomcat/webapps/ROOT
+          mountPath: /data/nginx
       volumes:
       - name: pvclogin
         persistentVolumeClaim:
@@ -275,7 +239,7 @@ spec:
   selector:
     login: login-app-2c
   type: NodePort
-  clusterIP: 10.100.100.3
+  clusterIP: 172.20.10.3
   ports:
     - protocol: TCP
       port: 80
@@ -307,7 +271,7 @@ metadata:
   name: hpe-login
 spec:
   maxReplicas: 10
-  minReplicas: 3
+  minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -323,7 +287,7 @@ metadata:
   labels:
     cart: cart-app-2c
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       cart: cart-app-2c
@@ -349,21 +313,9 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
         volumeMounts:
         - name: pvccart
-          mountPath: /opt/tomcat/webapps/ROOT
+          mountPath: /data/nginx
       volumes:
       - name: pvccart
         persistentVolumeClaim:
@@ -381,7 +333,7 @@ spec:
   selector:
     cart: cart-app-2c
   type: NodePort
-  clusterIP: 10.100.100.4
+  clusterIP: 172.20.10.4
   ports:
     - protocol: TCP
       port: 80
@@ -413,7 +365,7 @@ metadata:
   name: hpe-cart
 spec:
   maxReplicas: 10
-  minReplicas: 3
+  minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
