@@ -1,0 +1,300 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-sign-2a
+  labels:
+    sign-was: sign-app-was-2a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      sign-was: sign-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        sign-was: sign-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/roll:v1.0
+          name: sign-was
+          ports:
+           - containerPort: 8080
+          resources:
+            requests:
+              memory: 150Mi
+              cpu: 150m
+            limits:
+              memory: 150Mi
+              cpu: 150m
+      nodeSelector:
+        sign-was: sign-app-was-2a
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sign-was-svc
+spec:
+  selector:
+    sign-was: sign-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.20
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-main-2a
+  labels:
+    main-was: main-app-was-2a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      main-was: main-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        main-was: main-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/roll:v1.0
+          name: main-was
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 200Mi
+              cpu: 200m
+            limits:
+              memory: 200Mi
+              cpu: 200m
+          volumeMounts:
+            - name: pvcmain-was
+              mountPath: /data/tomcat
+      volumes:
+        - name: pvcmain-was
+          persistentVolumeClaim:
+            claimName: pvc-was
+      nodeSelector:
+        main-was: main-app-was-2a
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: main-was-svc
+spec:
+  selector:
+    main-was: main-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.10
+  clusterIP: 172.20.10.10
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvmain-was
+spec:
+  capacity:
+    storage: 8Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: standard
+  hostPath:
+    path: /data/tomcat
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-main-was
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-main-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-login-2a
+  labels:
+    login-was: login-app-was-2a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      login-was: login-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        login-was: login-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
+          name: login-was
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 150Mi
+              cpu: 150m
+            limits:
+              memory: 150Mi
+              cpu: 150m
+      nodeSelector:
+        login-was: login-app-was-2a
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-was-svc-2a
+spec:
+  selector:
+    login-was: login-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.30
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-cart-2a
+  labels:
+    cart-was: cart-app-was-2a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        cart-was: cart-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        cart-was: cart-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
+          name: cart-was
+          ports:
+           - containerPort: 8080
+          resources:
+            requests:
+              memory: 150Mi
+              cpu: 150m
+            limits:
+              memory: 150Mi
+              cpu: 150m
+      nodeSelector:
+        cart-was: cart-app-was-2a
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-was-svc
+spec:
+  selector:
+    cart-was: cart-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.40
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-sign-was
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-sign-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-login-was
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-login-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-cart-was
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-cart-2a
+  targetCPUUtilizationPercentage: 50
+
