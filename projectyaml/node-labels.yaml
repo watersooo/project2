@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Node
 metadata:
-  name: guru-reworker1  #콘솔 노드 이름으로 교체해주기
+  name: ip-10-100-11-167.ap-northeast-2.compute.internal
   labels:
     main: main-app-2a
     login: login-app-2a
@@ -15,7 +15,7 @@ metadata:
 apiVersion: v1
 kind: Node
 metadata:
-  name: guru-reworker2
+  name: ip-10-100-12-97.ap-northeast-2.compute.internal
   labels:
     main: main-app-2c
     login: login-app-2c
