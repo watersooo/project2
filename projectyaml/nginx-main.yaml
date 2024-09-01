@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ap-nginx-main-2a
+  namespace: ap
   labels:
     main: main-app-2a
 spec:
