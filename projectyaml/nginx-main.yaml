@@ -52,6 +52,7 @@ spec:
   selector:
     main: main-app-2a
   type: NodePort
+  clusterIP: 172.20.10.1
   ports:
     - protocol: TCP
       port: 80
