@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ap-nginx-sign-2a
+  namespace: ap
   labels:
     sign: sign-app-2a
 spec:
