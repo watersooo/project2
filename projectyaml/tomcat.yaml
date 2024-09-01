@@ -21,7 +21,7 @@ spec:
         sign-was: sign-app-was-2a
     spec:
       containers:
-        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/roll2:v1.0
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
           name: sign-was
           ports:
            - containerPort: 8080
