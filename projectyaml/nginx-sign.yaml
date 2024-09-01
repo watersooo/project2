@@ -91,5 +91,5 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: app-nginx-sign-2a
+    name: ap-nginx-sign-2a
   targetCPUUtilizationPercentage: 50
