@@ -34,7 +34,7 @@ spec:
             cpu: 100m
         volumeMounts:
         - name: pvccart
-          mountPath: /data/tomcat
+          mountPath: /data/nginx
       volumes:
       - name: pvccart
         persistentVolumeClaim:
