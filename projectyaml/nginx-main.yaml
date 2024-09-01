@@ -47,6 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: main-svc
+  namespace: ap
 spec:
   selector:
     main: main-app-2a
@@ -61,6 +62,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pvmain
+  namespace: ap
 spec:
   capacity:
     storage: 2Gi
@@ -78,6 +80,7 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: hpe-main
+  namespace: ap
 spec:
   maxReplicas: 10
   minReplicas: 1
