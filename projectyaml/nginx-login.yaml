@@ -53,7 +53,7 @@ spec:
   selector:
     login: login-app-2a
   type: NodePort
-  clusterIP: 172.20.0.4
+  clusterIP: 172.20.10.3
   ports:
     - protocol: TCP
       port: 80
