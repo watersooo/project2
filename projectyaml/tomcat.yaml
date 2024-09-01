@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ap-tomcat-sign-2a
+  namespace: ap
   labels:
     sign-was: sign-app-was-2a
 spec:
@@ -56,6 +57,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ap-tomcat-main-2a
+  namespace: ap
   labels:
     main-was: main-app-was-2a
 spec:
@@ -150,6 +152,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ap-tomcat-login-2a
+  namespace: ap
   labels:
     login-was: login-app-was-2a
 spec:
@@ -204,6 +207,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ap-tomcat-cart-2a
+  namespace: ap
   labels:
     cart-was: cart-app-was-2a
 spec:
