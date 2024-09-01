@@ -70,7 +70,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain  # 변경된 부분
+  persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
   hostPath:
     path: /data/nginx
