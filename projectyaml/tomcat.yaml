@@ -77,7 +77,7 @@ spec:
         main-was: main-app-was-2a
     spec:
       containers:
-        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/roll2:v1.0
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/roll:v1.0
           name: main-was
           ports:
             - containerPort: 8080
