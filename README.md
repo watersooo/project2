@@ -6,7 +6,7 @@
 ## ✈ 배포주소
 
 개발 버전 : version 1.0.0.0 </br>
-도메인 주소 : www.watersooo.shop </br>
+도메인 주소 : www.subal.shop </br>
 
 ## ✌️버전
 | Version | Description | Date |
@@ -19,14 +19,14 @@
 
 ## 🧑‍💻팀원 소개
 
-| 이름 | 구경범 | 노현수 | 장정원 |
+| 이름 | 노현수 | 왕진우 | 김태형 |
 | :------------: | :------------: | :------------: | :------------: |
 |  | <img src="https://avatars.githubusercontent.com/u/174182609?v=4" width="150" /> | <img src= "https://avatars.githubusercontent.com/u/175070823?v=4" width="150"/> | <img src= "https://avatars.githubusercontent.com/u/174423823?v=4" width="150"/> |
 | 깃허브 | [@kku9](https://github.com/kku9) | [@watersooo](https://github.com/watersooo) | [@Jangmaker](https://github.com/Jangmaker) |
-| 역할 | Technology Leader | Project Leader | Engineer |
+| 역할 | Project Leader | Technology Leader | Engineer |
 |  |  |  |  |
 
-| 이름 | 송태훈 | 류영수 |
+| 이름 | 김희준 | 송태훈 |
 | :------------: | :------------: | :------------: |
 |  | <img src="https://avatars.githubusercontent.com/u/106800250?v=4" width="150"/> | <img src="https://avatars.githubusercontent.com/u/121004134?v=4" width="150"/> |
 | 깃허브 | [@SongTaeHoon](https://github.com/SongTaeHoon) | [@ryuyoungsu](https://github.com/ryuyoungsu) |
