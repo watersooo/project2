@@ -94,8 +94,8 @@
 ![dockerarchitecture.PNG](MyHomeGYM/podarchitecture.png)
 
 
-## 🗂ERD
---ERD
+## 🗂홈페이지
+--page
 
 ![erdtables.png](MyHomeGYM/erdtables.png)		![erdproducts1.png](MyHomeGYM/erdproducts1.png)	
 
