@@ -87,11 +87,8 @@
 
 
 ## 🧱아키텍처
-![architecture.PNG](MyHomeGYM/architecture.png)
+![architecture.PNG](All-powerful/architectur.png.jpg)
 
-![podarchitecture.PNG](MyHomeGYM/dockerarchitecture.png)
-
-![dockerarchitecture.PNG](MyHomeGYM/podarchitecture.png)
 
 
 ## 🗂홈페이지
