@@ -1,6 +1,6 @@
 한정교 second project
 
-![logo](https://github.com/user-attachments/assets/ea4b8a5a-c239-402f-8829-4a4bb2ee507b)
+![logo](https://github.com/watersooo/project2/blob/main/All-powerful/All-powerful.png.jpg)
 
 ---
 ## ✈ 배포주소
