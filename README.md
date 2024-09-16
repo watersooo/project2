@@ -28,8 +28,8 @@
 
 | 이름 | 김희준 | 송태훈 |
 | :------------: | :------------: | :------------: |
-|  | <img src="https://avatars.githubusercontent.com/u/106800250?v=4" width="150"/> | <img src="https://avatars.githubusercontent.com/u/106800250?v=4" width="150"/> |
-| 깃허브 | [@SongTaeHoon](https://github.com/SongTaeHoon) | [@SongTaeHoon](https://github.com/SongTaeHoon) |
+|  | <img src="https://avatars.githubusercontent.com/u/174393496?v=4" width="150"/> | <img src="https://avatars.githubusercontent.com/u/106800250?v=4" width="150"/> |
+| 깃허브 | [@heejun-ii](https://github.com/heejun-ii) | [@SongTaeHoon](https://github.com/SongTaeHoon) |
 | 역할 | Engineer | Engineer |
 
 
