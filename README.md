@@ -21,7 +21,7 @@
 
 | 이름 | 노현수 | 왕진우 | 김태형 |
 | :------------: | :------------: | :------------: | :------------: |
-|  | <img src= "https://avatars.githubusercontent.com/u/175070823?v=4" width="150"/> | <img src= "https://avatars.githubusercontent.com/u/175070823?v=4" width="150"/> | <img src= "https://avatars.githubusercontent.com/u/174423823?v=4" width="150"/> |
+|  | <img src= "https://avatars.githubusercontent.com/u/175070823?v=4" width="150"/> | <img src= "https://avatars.githubusercontent.com/u/175070823?v=4" width="150"/> |  |
 | 깃허브 | [@watersooo](https://github.com/watersooo) | [@watersooo](https://github.com/watersooo) | [@Jangmaker](https://github.com/Jangmaker) |
 | 역할 | Project Leader | Technology Leader | Engineer |
 |  |  |  |  |
