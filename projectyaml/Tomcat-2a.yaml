@@ -1,0 +1,437 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-sign-2a
+  namespace: ap
+  labels:
+    sign-was: sign-app-was-2a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      sign-was: sign-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        sign-was: sign-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
+          name: sign-was
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 250Mi
+              cpu: 250m
+            limits:
+              memory: 250Mi
+              cpu: 250m
+          volumeMounts:
+            - name: pv-sign-was
+              mountPath: /data/tomcat
+          livenessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: pv-sign-was
+          persistentVolumeClaim:
+            claimName: pvc-sign-was
+      nodeSelector:
+        sign-was: sign-app-was-2a
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-sign-was
+  namespace: ap
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-sign-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-sign-was
+  namespace: ap
+spec:
+  capacity:
+    storage: 8Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: standard
+  hostPath:
+    path: /data/tomcat
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sign-was-svc
+  namespace: ap
+spec:
+  selector:
+    sign-was: sign-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.20
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-main-2a
+  namespace: ap
+  labels:
+    main-was: main-app-was-2a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      main-was: main-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        main-was: main-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
+          name: main-was
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 250Mi
+              cpu: 250m
+            limits:
+              memory: 250Mi
+              cpu: 250m
+          volumeMounts:
+            - name: pv-main-was
+              mountPath: /data/tomcat
+          livenessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: pv-main-was
+          persistentVolumeClaim:
+            claimName: pvc-main-was
+      nodeSelector:
+        main-was: main-app-was-2a
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-main-was
+  namespace: ap
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-main-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-main-was
+  namespace: ap
+spec:
+  capacity:
+    storage: 8Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: standard
+  hostPath:
+    path: /data/tomcat
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: main-was-svc
+  namespace: ap
+spec:
+  selector:
+    main-was: main-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.10
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-login-2a
+  namespace: ap
+  labels:
+    login-was: login-app-was-2a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      login-was: login-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        login-was: login-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
+          name: login-was
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 250Mi
+              cpu: 250m
+            limits:
+              memory: 250Mi
+              cpu: 250m
+          volumeMounts:
+            - name: pv-login-was
+              mountPath: /data/tomcat
+          livenessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: pv-login-was
+          persistentVolumeClaim:
+            claimName: pvc-login-was
+      nodeSelector:
+        login-was: login-app-was-2a
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-login-was
+  namespace: ap
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-login-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-login-was
+  namespace: ap
+spec:
+  capacity:
+    storage: 8Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: standard
+  hostPath:
+    path: /data/tomcat
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-was-svc-2a
+  namespace: ap
+spec:
+  selector:
+    login-was: login-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.30
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ap-tomcat-cart-2a
+  namespace: ap
+  labels:
+    cart-was: cart-app-was-2a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      cart-was: cart-app-was-2a
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        cart-was: cart-app-was-2a
+    spec:
+      containers:
+        - image: 730335352888.dkr.ecr.ap-northeast-2.amazonaws.com/test:v1.3
+          name: cart-was
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 250Mi
+              cpu: 250m
+            limits:
+              memory: 250Mi
+              cpu: 250m
+          volumeMounts:
+            - name: pv-cart-was
+              mountPath: /data/tomcat
+          livenessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: pv-cart-was
+          persistentVolumeClaim:
+            claimName: pvc-cart-was
+      nodeSelector:
+        cart-was: cart-app-was-2a
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpe-cart-was
+  namespace: ap
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ap-tomcat-cart-2a
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cart-was
+  namespace: ap
+spec:
+  capacity:
+    storage: 8Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: standard
+  hostPath:
+    path: /data/tomcat
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-was-svc
+  namespace: ap
+spec:
+  selector:
+    cart-was: cart-app-was-2a
+  type: ClusterIP
+  clusterIP: 172.20.10.40
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
