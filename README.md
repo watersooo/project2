@@ -103,8 +103,8 @@
 ## 🗂홈페이지
 --page
 
-![erdtables.png](MyHomeGYM/erdtables.png)		![erdproducts1.png](MyHomeGYM/erdproducts1.png)	
+![page1.png](All-powerful/page1.png)		
 
-![erdproducts2.png](MyHomeGYM/erdproducts2.png)		![erdproducts3.png](MyHomeGYM/erdproducts3.png)
+![page2.png](All-powerful/page2.png)	
 
 
