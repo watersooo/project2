@@ -45,7 +45,7 @@
 
 <table>
 <tr>
- <td align="center">인프라 서비스</td>
+ <td align="center">클라우드 서비스</td>
  <td>
   <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
  </td>
