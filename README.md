@@ -80,6 +80,8 @@
 <tr>
  <td align="center">협업툴</td>
  <td>
+    <img src="https://img.shields.io/badge/Whatap-005BAC?style=for-the-badge&logoColor=white"/>
+    <img src="https://img.shields.io/badge/JMeter-D22128?style=for-the-badge&logo=apachejmeter&logoColor=white"/>	 
     <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/> 
  </td>
