@@ -6,7 +6,7 @@ metadata:
   labels:
     main: main-app-2a
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       main: main-app-2a
@@ -35,6 +35,18 @@ spec:
         volumeMounts:
         - name: pvcmain
           mountPath: /data/nginx
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10   
       volumes:
       - name: pvcmain
         persistentVolumeClaim:
@@ -84,7 +96,7 @@ metadata:
   namespace: ap
 spec:
   maxReplicas: 10
-  minReplicas: 1
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
