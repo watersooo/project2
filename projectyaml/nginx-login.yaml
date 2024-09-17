@@ -6,7 +6,7 @@ metadata:
   labels:
     login: login-app-2a
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       login: login-app-2a
@@ -87,7 +87,7 @@ metadata:
   namespace: ap
 spec:
   maxReplicas: 10
-  minReplicas: 1
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
