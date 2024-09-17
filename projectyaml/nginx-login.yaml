@@ -35,6 +35,18 @@ spec:
         volumeMounts:
         - name: pvclogin
           mountPath: /data/nginx
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10   
       volumes:
       - name: pvclogin
         persistentVolumeClaim:
