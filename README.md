@@ -45,6 +45,13 @@
 
 <table>
 <tr>
+ <td align="center">하드웨어</td>
+ <td>
+  <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
+ </td>
+</tr>
+	
+<tr>
  <td align="center">언어</td>
  <td>
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=ffffff"/>
