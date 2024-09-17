@@ -1,0 +1,124 @@
+{
+  "shoesBox": [
+    {
+      "id": 1,
+      "productName": "[인텔 i7-14700F/RTX4060/16GB]",
+      "price": 1579000,
+      "color": "game",
+      "image": "./upassets/game1.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 2,
+      "productName": "[AMD R5-7500F/RTX4060/16GB]",
+      "price": 1259000,
+      "color": "game",
+      "image": "./upassets/game2.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 3,
+      "productName": "[AMD R7-7800X3D/RTX4070TiS/32GB]",
+      "price": 2909000,
+      "color": "game",
+      "image": "./upassets/game3.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 4,
+      "productName": "[AMD R7-5700X3D/RTX4070S/32GB]",
+      "price": 1869000,
+      "color": "game",
+      "image": "./upassets/game4.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 5,
+      "productName": "[인텔 i7-12700F/RTX4070S/32GB]",
+      "price": 1889000,
+      "color": "game",
+      "image": "./upassets/game5.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 6,
+      "productName": "[AMD R5-5600G/내장VGA/16GB]",
+      "price": 569000,
+      "color": "oper",
+      "image": "./upassets/oper1.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 7,
+      "productName": "[인텔 G7400/내장VGA/16GB]",
+      "price": 705000,
+      "color": "oper",
+      "image": "./upassets/oper2.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 8,
+      "productName": " [인텔 i7-12700/내장VGA/16GB]",
+      "price": 829000,
+      "color": "oper",
+      "image": "./upassets/oper3.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 9,
+      "productName": "[인텔 G7400/내장VGA/16GB]",
+      "price": 659000,
+      "color": "oper",
+      "image": "./upassets/oper4.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 10,
+      "productName": "[인텔 G7400/내장VGA/16G]",
+      "price": 529000,
+      "color": "oper",
+      "image": "./upassets/oper5.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 11,
+      "productName": "[AMD R9 9950X/RTX4080S/32GB] ",
+      "price": 3875000,
+      "color": "spe",
+      "image": "./upassets/spe1.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    },
+    {
+      "id": 12,
+      "productName": "[AMD R9 9900X/RTX4070TiS/32GB]",
+      "price": 2949000,
+      "color": "spe",
+      "image": "./upassets/spe2.jpg",
+      "wish": false,
+      "cart": false,
+      "order": 0
+    }
+  ]
+}
