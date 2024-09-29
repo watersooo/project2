@@ -1,0 +1,40 @@
+pipeline {
+    agent any 
+
+    environment {
+        AWS_REGION = 'ap-northeast-2' 
+        ECR_REPOSITORY = ['nginx-admin', 'nginx-index', 'nginx-login', 'nginx-signup', 'tomcat-index', 'tomcat-index-rolling', 'tomcat-redis'] // ECR 리포지토리 이름
+        IMAGE_TAG = 'latest' // 태그를 지정할 수 있음
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Docker 이미지를 빌드
+                    sh 'docker build -t $ECR_REPOSITORY:$IMAGE_TAG .'
+                }
+            }
+        }
+
+        stage('Login to ECR') {
+            steps {
+                script {
+                    // ECR에 로그인
+                    sh '''
+                    aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 784849575779.dkr.ecr.$AWS_REGION.amazonaws.com
+                    '''
+                }
+            }
+        }
+
+        stage('Push to ECR') {
+            steps {
+                script {
+                    // ECR로 이미지 푸시
+                    sh 'docker push $ECR_REPOSITORY:$IMAGE_TAG'
+                }
+            }
+        }
+    }
+}
