@@ -6,7 +6,7 @@
 ## ✈ 배포주소
 
 개발 버전 : version 1.0.0.0 </br>
-도메인 주소 : www.subal.shop </br>
+도메인 주소 : www.watersooo.shop </br>
 
 ## ✌️버전
 | Version | Description | Date |
